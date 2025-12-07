@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
 
   functies.associate = function(models) {
     // Has many medewerkers
-    functies.hasMany(models.medewerker, {
+    functies.hasMany(models.medewerkers, {
       foreignKey: 'functie_id',
       as: 'medewerkers'
     });

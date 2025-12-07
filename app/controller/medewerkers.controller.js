@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   }
 
   // Create a Medewerker
-  const medewerker = {
+  const medewerkers = {
     id_nummer: req.body.id_nummer,
     functie_id: req.body.functie_id,
     datum_in_dienst_treding: req.body.datum_in_dienst_treding,
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
   };
 
   // Save Medewerker in the database
-  db.medewerker.create(medewerker)
+  db.medewerkers.create(medewerkers)
     .then(data => {
       res.send(data);
     })
@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Medewerkers from the database.
 exports.findAll = (req, res) => {
-  db.medewerker.findAll({
+  db.medewerkers.findAll({
     include: [
       {
         model: db.functies,

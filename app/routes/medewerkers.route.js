@@ -52,15 +52,15 @@
  */
 
 module.exports = app => {
-  const medewerker = require("../controller/medewerker.controller.js");
+  const medewerkers = require("../controller/medewerkers.controller.js");
 
   var router = require("express").Router();
 
   /**
    * @swagger
-   * /api/medewerker:
+   * /api/medewerkers:
    *   post:
-   *     summary: Maak nieuwe medewerker aan
+   *     summary: Maak nieuwe medewerkers aan
    *     tags: [Medewerker]
    *     requestBody:
    *       required: true
@@ -80,11 +80,11 @@ module.exports = app => {
    *       500:
    *         description: Server error
    */
-  router.post("/", medewerker.create);
+  router.post("/", medewerkers.create);
 
   /**
    * @swagger
-   * /api/medewerker:
+   * /api/medewerkers:
    *   get:
    *     summary: Haal alle medewerkers op
    *     tags: [Medewerker]
@@ -100,7 +100,7 @@ module.exports = app => {
    *       500:
    *         description: Server error
    */
-  router.get("/", medewerker.findAll);
+  router.get("/", medewerkers.findAll);
 
-  app.use('/api/medewerker', router);
+  app.use('/api/medewerkers', router);
 };
