@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const { verifyToken } = require("./utils/jwt.utils");
 
 const app = express();
 
@@ -10,9 +9,6 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// JWT Secret Key (in production, use environment variable)
-process.env.JWT_SECRET = "your-super-secret-key-1234567890";
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -61,28 +57,7 @@ app.get("/", (req, res) => {
 });
 
 // Import routes
-require("./routes/auth.routes")(app);
-
-// Apply JWT verification to all routes except medewerkers auth and docs
-app.use((req, res, next) => {
-  // Skip JWT verification for medewerkers auth routes and Swagger docs
-  if (req.path.startsWith('/api/medewerkers/signin') || 
-      req.path.startsWith('/api/medewerkers/signup') || 
-      req.path.startsWith('/api/medewerkers/refresh-token') || 
-      req.path.startsWith('/api/docs')) {
-    return next();
-  }
-  verifyToken(req, res, next);
-});
-
-// Protected routes
-require("./routes/persoons_gegevens.route.js")(app);
-require("./routes/medewerkers.route.js")(app);
-require("./routes/persoons_gegevens_log.route.js")(app);
-require("./routes/geslacht.route.js")(app);
-require("./routes/burgerlijke_staat.route.js")(app);
-require("./routes/functies.route.js")(app);
-require("./routes/type_mutaties.route.js")(app);
+require("./routes/bevolkingsregister.route.js")(app);
 
 const env = process.env.NODE_ENV || "development";
 const hostname = process.env.HOST || "localhost";
