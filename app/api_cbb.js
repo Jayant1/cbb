@@ -59,15 +59,13 @@ app.get("/", (req, res) => {
 // Import routes
 require("./routes/bevolkingsregister.route.js")(app);
 
-const env = process.env.NODE_ENV || "development";
+const env = (process.env.NODE_ENV || "development").trim();
 const hostname = process.env.HOST || "localhost";
 const portnumber = process.env.PORT || 3000;
 // set port, listen for requests
 
-if (env === "development") {
-  app.listen(portnumber, hostname, () => {
+app.listen(portnumber, hostname, () => {
   console.log(`Server is running on port http://${hostname}:${portnumber}/, For documentation and testing http://${hostname}:${portnumber}/api/docs`);
 });
-}
 
 module.exports = app;

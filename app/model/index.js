@@ -1,6 +1,6 @@
 // Database
 // env options: development, staging or production
-const env = process.env.NODE_ENV || 'localhost'
+const env = (process.env.NODE_ENV || 'localhost').trim()
 const config = require('../config/database.json')[env]
 const { Sequelize, DataTypes } = require('sequelize')
 const db = {}
