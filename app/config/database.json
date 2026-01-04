@@ -73,10 +73,10 @@
     }
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "cbb",
-    "host": "localhost",
+    "username": "cbb_admin",
+    "password": "jay123",
+    "database": "bevolkingsregister",
+    "host": "cbb-db.gov.sr",
     "port": "3306",
     "dialect": "mariadb",
     "timezone": "-03:00",
@@ -95,6 +95,6 @@
       "acquire": 60000,
       "evict": 1000
     },
-    "logging": false
+    "logging": true
   }
 }
