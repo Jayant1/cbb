@@ -38,7 +38,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://cbb-api.gov.sr:3000',
         description: 'Sandbox omgeving'
       }
     ]
@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 require("./routes/bevolkingsregister.route.js")(app);
 
 const env = (process.env.NODE_ENV || "development").trim();
-const hostname = process.env.HOST || "localhost";
+const hostname = process.env.HOST || "0.0.0.0";
 const portnumber = process.env.PORT || 3000;
 // set port, listen for requests
 
