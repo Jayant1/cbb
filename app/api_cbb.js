@@ -1,5 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
@@ -38,7 +41,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://cbb-api.gov.sr:3000',
+        url: 'https://cbb-api.gov.sr:3000',
         description: 'Sandbox omgeving'
       }
     ]
@@ -62,10 +65,34 @@ require("./routes/bevolkingsregister.route.js")(app);
 const env = (process.env.NODE_ENV || "development").trim();
 const hostname = process.env.HOST || "0.0.0.0";
 const portnumber = process.env.PORT || 3000;
-// set port, listen for requests
 
-app.listen(portnumber, hostname, () => {
-  console.log(`Server is running on port http://${hostname}:${portnumber}/, For documentation and testing http://${hostname}:${portnumber}/api/docs`);
-});
+// SSL configuratie
+const sslKeyPath = process.env.SSL_KEY || '/etc/letsencrypt/live/cbb-api.gov.sr/privkey.pem';
+const sslCertPath = process.env.SSL_CERT || '/etc/letsencrypt/live/cbb-api.gov.sr/fullchain.pem';
+
+if (env === "production") {
+  // HTTPS server voor productie
+  try {
+    const sslOptions = {
+      key: fs.readFileSync(sslKeyPath),
+      cert: fs.readFileSync(sslCertPath)
+    };
+    
+    https.createServer(sslOptions, app).listen(portnumber, hostname, () => {
+      console.log(`HTTPS Server is running on https://${hostname}:${portnumber}/`);
+      console.log(`API Documentation: https://${hostname}:${portnumber}/api/docs`);
+    });
+  } catch (err) {
+    console.error('SSL certificaat niet gevonden, start HTTP server:', err.message);
+    app.listen(portnumber, hostname, () => {
+      console.log(`HTTP Server is running on http://${hostname}:${portnumber}/`);
+    });
+  }
+} else {
+  // HTTP server voor development
+  app.listen(portnumber, hostname, () => {
+    console.log(`Server is running on http://${hostname}:${portnumber}/, For documentation and testing http://${hostname}:${portnumber}/api/docs`);
+  });
+}
 
 module.exports = app;
