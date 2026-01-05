@@ -67,8 +67,8 @@ const hostname = process.env.HOST || "0.0.0.0";
 const portnumber = process.env.PORT || 3000;
 
 // SSL configuratie
-const sslKeyPath = process.env.SSL_KEY || '/etc/letsencrypt/live/cbb-api.gov.sr/privkey.pem';
-const sslCertPath = process.env.SSL_CERT || '/etc/letsencrypt/live/cbb-api.gov.sr/fullchain.pem';
+const sslKeyPath = process.env.SSL_KEY || '/etc/ssl/cbb/privkey.pem';
+const sslCertPath = process.env.SSL_CERT || '/etc/ssl/cbb/fullchain.pem';
 
 if (env === "production") {
   // HTTPS server voor productie
