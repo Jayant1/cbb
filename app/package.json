@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api_cbb.js",
     "dev": "nodemon api_cbb.js",
-    "production": "set NODE_ENV=production && node api_cbb.js"
+    "production": "SSL_KEY=/etc/ssl/cbb/privkey.pem SSL_CERT=/etc/ssl/cbb/fullchain.pem NODE_ENV=production node api_cbb.js"    
   },
   "repository": {
     "type": "git",
