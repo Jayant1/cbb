@@ -1,10 +1,9 @@
 {
-  "development": {
-    "logging": true,
-    "username": "root",
-    "password": "root",
-    "database": "cbb",
-    "host": "localhost",
+  "sandbox": {
+    "username": "cbb_admin",
+    "password": "jay123",
+    "database": "bevolkingsregister",
+    "host": "cbb-db.gov.sr",
     "port": "3306",
     "dialect": "mariadb",
     "timezone": "-03:00",
@@ -13,8 +12,7 @@
       "timestamps": false
     },
     "dialectOptions": {
-      "connectTimeout": 60000,
-      "useUTC": false
+      "connectTimeout": 60000
     },
     "pool": {
       "handleDisconnects": true,
@@ -23,7 +21,8 @@
       "idle": 30000,
       "acquire": 60000,
       "evict": 1000
-    }
+    },
+    "logging": true
   },
   "development_https": {
     "username": "root",
