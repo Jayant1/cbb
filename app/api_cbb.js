@@ -70,7 +70,7 @@ const portnumber = process.env.PORT || 3000;
 const sslKeyPath = process.env.SSL_KEY || '/etc/ssl/cbb/privkey.pem';
 const sslCertPath = process.env.SSL_CERT || '/etc/ssl/cbb/fullchain.pem';
 
-if (env === "production") {
+if (env === "production" || env === "sandbox") {
   // HTTPS server voor productie
   try {
     const sslOptions = {
