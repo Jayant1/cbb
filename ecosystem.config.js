@@ -4,7 +4,7 @@ module.exports = {
     script: '/root/cbb/app/api_cbb.js',
     append_env_to_name: true,
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
-    instances: 3,
+    instances: 1,
     merge_logs: true,
     time: true,
     autorestart: true,
