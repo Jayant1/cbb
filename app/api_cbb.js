@@ -59,6 +59,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to CBB API application." });
 });
 
+// OpenAPI spec endpoint voor X-Road
+app.get('/api/openapi.json', (req, res) => {
+  res.json(swaggerSpec);
+});
+
 // Import routes
 require("./routes/bevolkingsregister.route.js")(app);
 
