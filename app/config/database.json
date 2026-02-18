@@ -4,8 +4,8 @@
     "password": "jay123",
     "database": "bevolkingsregister",
     "host": "db-cbb.gov.sr",
-    "port": "3306",
-    "dialect": "mariadb",
+    "port": "5432",
+    "dialect": "postgres",
     "timezone": "-03:00",
     "operatorsAliases": 0,
     "define": {
@@ -29,8 +29,8 @@
     "password": "root",
     "database": "cbb",
     "host": "localhost",
-    "port": "3306",
-    "dialect": "mariadb",
+    "port": "5432",
+    "dialect": "postgres",
     "timezone": "-03:00",
     "operatorsAliases": 0,
     "define": {
@@ -53,7 +53,7 @@
     "password": "root",
     "database": "cbb",
     "host": "localhost",
-    "dialect": "mariadb",
+    "dialect": "postgres",
     "timezone": "-03:00",
     "operatorsAliases": 0,
     "define": {
@@ -76,8 +76,8 @@
     "password": "jay123",
     "database": "bevolkingsregister",
     "host": "db-cbb.gov.sr",
-    "port": "3306",
-    "dialect": "mariadb",
+    "port": "5432",
+    "dialect": "postgres",
     "timezone": "-03:00",
     "operatorsAliases": 0,
     "define": {
