@@ -1,15 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-  const verblijf = sequelize.define("verblijf", {
+  const verblijf = sequelize.define("verblijven", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    persoon_id: {
+    personen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    adres_id: {
+    adressen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -32,12 +32,12 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   verblijf.associate = function(models) {
-    verblijf.belongsTo(models.persoon, {
-      foreignKey: 'persoon_id',
+    verblijf.belongsTo(models.personen, {
+      foreignKey: 'personen_id',
       as: 'persoon'
     });
-    verblijf.belongsTo(models.adres, {
-      foreignKey: 'adres_id',
+    verblijf.belongsTo(models.adressen, {
+      foreignKey: 'adressen_id',
       as: 'adres'
     });
   };

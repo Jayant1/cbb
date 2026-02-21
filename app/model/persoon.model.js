@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const persoon = sequelize.define("persoon", {
+  const persoon = sequelize.define("personen", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING(100),
       allowNull: true
     },
-    geboorteland_id: {
+    landen_id: {
       type: Sequelize.INTEGER,
       allowNull: true
     },
@@ -38,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.ENUM('ongehuwd', 'gehuwd', 'gescheiden', 'weduwe_weduwnaar', 'geregistreerd_partnerschap'),
       allowNull: false
     },
-    nationaliteit_id: {
+    nationaliteiten_id: {
       type: Sequelize.INTEGER,
       allowNull: true
     },
@@ -62,27 +62,27 @@ module.exports = (sequelize, Sequelize) => {
 
   persoon.associate = function(models) {
     persoon.belongsTo(models.landen, {
-      foreignKey: 'geboorteland_id',
+      foreignKey: 'landen_id',
       as: 'geboorteland'
     });
     persoon.belongsTo(models.nationaliteiten, {
-      foreignKey: 'nationaliteit_id',
+      foreignKey: 'nationaliteiten_id',
       as: 'nationaliteit'
     });
-    persoon.hasMany(models.verblijf, {
-      foreignKey: 'persoon_id',
+    persoon.hasMany(models.verblijven, {
+      foreignKey: 'personen_id',
       as: 'verblijven'
     });
-    persoon.hasMany(models.document, {
-      foreignKey: 'persoon_id',
+    persoon.hasMany(models.documenten, {
+      foreignKey: 'personen_id',
       as: 'documenten'
     });
     persoon.hasMany(models.nationaliteit_historie, {
-      foreignKey: 'persoon_id',
+      foreignKey: 'personen_id',
       as: 'nationaliteit_historie'
     });
     persoon.hasMany(models.burgerlijke_staat_historie, {
-      foreignKey: 'persoon_id',
+      foreignKey: 'personen_id',
       as: 'burgerlijke_staat_historie'
     });
   };

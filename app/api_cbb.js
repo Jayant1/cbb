@@ -40,29 +40,14 @@ const swaggerOptions = {
         email: 'admin@cbb.egov.com'
       }
     },
-    servers: [
-      {
-        url: 'https://api-cbb.gov.sr:3000',
-        description: 'Sandbox omgeving'
-      }
-    ]
+    servers: []
   },
   apis: [path.join(__dirname, 'routes', '*.js')] // Path to the API docs
 };
 
-const swaggerSpec = swaggerJsdoc(swaggerOptions);
-
-// Swagger UI endpoint
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
 // Simple test route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to CBB API application." });
-});
-
-// OpenAPI spec endpoint voor X-Road
-app.get('/api/openapi.json', (req, res) => {
-  res.json(swaggerSpec);
 });
 
 // Import routes
@@ -76,6 +61,20 @@ const prod_hostname = os.hostname() + ".gov.sr";
 // SSL configuratie
 const sslKeyPath = process.env.SSL_KEY || '/etc/ssl/cbb/privkey.pem';
 const sslCertPath = process.env.SSL_CERT || '/etc/ssl/cbb/fullchain.pem';
+
+// Swagger server URL dynamisch op basis van omgeving
+const isProduction = env === "production" || env === "sandbox";
+swaggerOptions.definition.servers = [
+  {
+    url: isProduction
+      ? `https://${prod_hostname}:${portnumber}`
+      : `http://${hostname}:${portnumber}`,
+    description: isProduction ? 'Productie omgeving' : 'Lokale ontwikkelomgeving'
+  }
+];
+const swaggerSpecDynamic = swaggerJsdoc(swaggerOptions);
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecDynamic));
+app.get('/api/openapi.json', (req, res) => { res.json(swaggerSpecDynamic); });
 
 if (env === "production" || env === "sandbox") {
   // HTTPS server voor productie

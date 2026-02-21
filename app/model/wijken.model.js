@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    distrikt_id: {
+    distrikten_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -22,11 +22,11 @@ module.exports = (sequelize, Sequelize) => {
 
   wijken.associate = function(models) {
     wijken.belongsTo(models.distrikten, {
-      foreignKey: 'distrikt_id',
+      foreignKey: 'distrikten_id',
       as: 'distrikt'
     });
-    wijken.hasMany(models.adres, {
-      foreignKey: 'wijk_id',
+    wijken.hasMany(models.adressen, {
+      foreignKey: 'wijken_id',
       as: 'adressen'
     });
   };

@@ -17,12 +17,12 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   landen.associate = function(models) {
-    landen.hasMany(models.persoon, {
-      foreignKey: 'geboorteland_id',
+    landen.hasMany(models.personen, {
+      foreignKey: 'landen_id',
       as: 'personen'
     });
-    landen.hasMany(models.adres, {
-      foreignKey: 'land_id',
+    landen.hasMany(models.adressen, {
+      foreignKey: 'landen_id',
       as: 'adressen'
     });
   };

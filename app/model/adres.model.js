@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const adres = sequelize.define("adres", {
+  const adres = sequelize.define("adressen", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -17,15 +17,15 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING(20),
       allowNull: true
     },
-    wijk_id: {
+    wijken_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    distrikt_id: {
+    distrikten_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    land_id: {
+    landen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -37,19 +37,19 @@ module.exports = (sequelize, Sequelize) => {
 
   adres.associate = function(models) {
     adres.belongsTo(models.wijken, {
-      foreignKey: 'wijk_id',
+      foreignKey: 'wijken_id',
       as: 'wijk'
     });
     adres.belongsTo(models.distrikten, {
-      foreignKey: 'distrikt_id',
+      foreignKey: 'distrikten_id',
       as: 'distrikt'
     });
     adres.belongsTo(models.landen, {
-      foreignKey: 'land_id',
+      foreignKey: 'landen_id',
       as: 'land'
     });
-    adres.hasMany(models.verblijf, {
-      foreignKey: 'adres_id',
+    adres.hasMany(models.verblijven, {
+      foreignKey: 'adressen_id',
       as: 'verblijven'
     });
   };

@@ -18,11 +18,11 @@ module.exports = (sequelize, Sequelize) => {
 
   distrikten.associate = function(models) {
     distrikten.hasMany(models.wijken, {
-      foreignKey: 'distrikt_id',
+      foreignKey: 'distrikten_id',
       as: 'wijken'
     });
-    distrikten.hasMany(models.adres, {
-      foreignKey: 'distrikt_id',
+    distrikten.hasMany(models.adressen, {
+      foreignKey: 'distrikten_id',
       as: 'adressen'
     });
   };

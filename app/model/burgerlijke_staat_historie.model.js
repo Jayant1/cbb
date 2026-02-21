@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    persoon_id: {
+    personen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -28,8 +28,8 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   burgerlijke_staat_historie.associate = function(models) {
-    burgerlijke_staat_historie.belongsTo(models.persoon, {
-      foreignKey: 'persoon_id',
+    burgerlijke_staat_historie.belongsTo(models.personen, {
+      foreignKey: 'personen_id',
       as: 'persoon'
     });
   };

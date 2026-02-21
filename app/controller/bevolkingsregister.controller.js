@@ -1,13 +1,13 @@
 const db = require("../model/index.js");
 
-const Persoon = db.persoon;
+const Persoon = db.personen;
 const Landen = db.landen;
 const Nationaliteiten = db.nationaliteiten;
-const Verblijf = db.verblijf;
-const Adres = db.adres;
+const Verblijf = db.verblijven;
+const Adres = db.adressen;
 const Wijken = db.wijken;
 const Distrikten = db.distrikten;
-const Document = db.document;
+const Document = db.documenten;
 const NationaliteitHistorie = db.nationaliteit_historie;
 const BurgerlijkeStaatHistorie = db.burgerlijke_staat_historie;
 

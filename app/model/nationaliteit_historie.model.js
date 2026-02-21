@@ -5,11 +5,11 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    persoon_id: {
+    personen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    nationaliteit_id: {
+    nationaliteiten_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -28,12 +28,12 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   nationaliteit_historie.associate = function(models) {
-    nationaliteit_historie.belongsTo(models.persoon, {
-      foreignKey: 'persoon_id',
+    nationaliteit_historie.belongsTo(models.personen, {
+      foreignKey: 'personen_id',
       as: 'persoon'
     });
     nationaliteit_historie.belongsTo(models.nationaliteiten, {
-      foreignKey: 'nationaliteit_id',
+      foreignKey: 'nationaliteiten_id',
       as: 'nationaliteit'
     });
   };

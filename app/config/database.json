@@ -49,9 +49,9 @@
     }
   },
   "localhost": {
-    "username": "root",
-    "password": "root",
-    "database": "cbb",
+    "username": "cbb_admin",
+    "password": "jay123",
+    "database": "bevolkingsregister",
     "host": "localhost",
     "dialect": "postgres",
     "timezone": "-03:00",

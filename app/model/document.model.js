@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-  const document = sequelize.define("document", {
+  const document = sequelize.define("documenten", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    persoon_id: {
+    personen_id: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
@@ -33,8 +33,8 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   document.associate = function(models) {
-    document.belongsTo(models.persoon, {
-      foreignKey: 'persoon_id',
+    document.belongsTo(models.personen, {
+      foreignKey: 'personen_id',
       as: 'persoon'
     });
   };

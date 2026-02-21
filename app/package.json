@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api_cbb.js",
     "dev": "nodemon api_cbb.js",
-    "production": "SSL_KEY=/etc/ssl/cbb/privkey.pem SSL_CERT=/etc/ssl/cbb/fullchain.pem NODE_ENV=production node api_cbb.js"    
+    "production": "SSL_KEY=/etc/ssl/cbb/privkey.pem SSL_CERT=/etc/ssl/cbb/fullchain.pem NODE_ENV=production node api_cbb.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,9 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.3",
-    "mariadb": "^3.4.5",
     "nodemon": "^3.1.10",
+    "pg": "^8.18.0",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"

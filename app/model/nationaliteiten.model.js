@@ -17,12 +17,12 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   nationaliteiten.associate = function(models) {
-    nationaliteiten.hasMany(models.persoon, {
-      foreignKey: 'nationaliteit_id',
+    nationaliteiten.hasMany(models.personen, {
+      foreignKey: 'nationaliteiten_id',
       as: 'personen'
     });
     nationaliteiten.hasMany(models.nationaliteit_historie, {
-      foreignKey: 'nationaliteit_id',
+      foreignKey: 'nationaliteiten_id',
       as: 'historie'
     });
   };
