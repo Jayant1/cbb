@@ -141,9 +141,10 @@ CREATE INDEX idx_personen_geboortedatum ON personen (geboortedatum);
 
 INSERT INTO personen (id, identificatienummer, voornamen, achternaam, geboortedatum, geboorteplaats, landen_id, geslacht, burgerlijke_staat, nationaliteiten_id, overlijdensdatum, overlijdensplaats, datum_aanmaak, datum_laatste_wijziging) VALUES
 (1, 'IC001985', 'Jan Willem',    'Aboikoni',                 '1985-01-23', 'Paramaribo', 1, 'M', 'gehuwd', 1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
-(2, 'IC007890', 'Maria Sophia',  'Aboikoni-Kasanpawiro',     '1987-05-15', 'Nickerie',   1, 'V', 'gehuwd', 1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11');
+(2, 'IC007890', 'Maria Sophia',  'Aboikoni-Kasanpawiro',     '1987-05-15', 'Nickerie',   1, 'V', 'gehuwd', 1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
+(3, 'IC007895', 'Ravi Kumar',    'Ramkhelawan',              '1990-08-10', 'Paramaribo', 1, 'M', 'ongehuwd', 1, NULL, NULL, '2026-02-21 21:26:00', '2026-02-21 21:26:00');
 
-SELECT setval('personen_id_seq', 2);
+SELECT setval('personen_id_seq', 3);
 
 -- ============================================================
 -- TABLE: adressen
