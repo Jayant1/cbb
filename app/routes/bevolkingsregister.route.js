@@ -124,13 +124,13 @@ module.exports = function(app) {
 
   /**
    * @swagger
-   * /api/ophaal_gegevens_van_bevolkingsregister/{identificatienummer}:
+   * /:
    *   get:
    *     summary: Ophalen van persoonsgegevens uit het bevolkingsregister
    *     description: Haalt alle gegevens op van een persoon op basis van identificatienummer, inclusief adres, documenten, nationaliteit historie en burgerlijke staat historie
    *     tags: [Bevolkingsregister]
    *     parameters:
-   *       - in: path
+   *       - in: query
    *         name: identificatienummer
    *         required: true
    *         schema:
@@ -156,7 +156,7 @@ module.exports = function(app) {
    *         description: Server fout
    */
   app.get(
-    "/api/ophaal_gegevens_van_bevolkingsregister/:identificatienummer",
+    "/",
     controller.ophaalGegevensVanBevolkingsregister
   );
 };

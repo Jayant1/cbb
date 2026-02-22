@@ -45,11 +45,6 @@ const swaggerOptions = {
   apis: [path.join(__dirname, 'routes', '*.js')] // Path to the API docs
 };
 
-// Simple test route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to CBB API application." });
-});
-
 // Import routes
 require("./routes/bevolkingsregister.route.js")(app);
 

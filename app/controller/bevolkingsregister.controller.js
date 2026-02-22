@@ -13,7 +13,7 @@ const BurgerlijkeStaatHistorie = db.burgerlijke_staat_historie;
 
 exports.ophaalGegevensVanBevolkingsregister = async (req, res) => {
   try {
-    const { identificatienummer } = req.params;
+    const { identificatienummer } = req.query;
 
     if (!identificatienummer) {
       return res.status(400).json({
