@@ -184,9 +184,25 @@ CREATE INDEX idx_adressen_wijk     ON adressen (wijken_id);
 CREATE INDEX idx_adressen_distrikt ON adressen (distrikten_id);
 
 INSERT INTO adressen (id, straatnaam, huisnummer, toevoeging, wijken_id, distrikten_id, landen_id, adres_type) VALUES
-(1, 'Henck Arronstraat', '42', 'A', 1, 1, 1, 'hoofdverblijf');
+(1,  'Henck Arronstraat',     '42',  'A',  1, 1, 1, 'hoofdverblijf'),
+(2,  'Kernkampweg',           '15',  NULL, 2, 1, 1, 'hoofdverblijf'),
+(3,  'Indira Gandhiweg',      '88',  NULL, 3, 1, 1, 'hoofdverblijf'),
+(4,  'Kwattaweg',             '210', NULL, 4, 1, 1, 'hoofdverblijf'),
+(5,  'Zorg en Hoop Pad',      '7',   'B',  5, 1, 1, 'hoofdverblijf'),
+(6,  'Saramaccastraat',       '33',  NULL, 1, 1, 1, 'hoofdverblijf'),
+(7,  'Mahonylaan',            '5',   NULL, 2, 1, 1, 'hoofdverblijf'),
+(8,  'Verlengde Gemenelandsweg', '120', NULL, 3, 1, 1, 'hoofdverblijf'),
+(9,  'Nieuwe Domineestraat',  '9',   NULL, 1, 1, 1, 'hoofdverblijf'),
+(10, 'Tourtonnelaan',         '44',  NULL, 4, 1, 1, 'hoofdverblijf'),
+(11, 'Coppenamestraat',       '67',  NULL, 5, 1, 1, 'hoofdverblijf'),
+(12, 'Frederikstraat',        '18',  NULL, 1, 1, 1, 'hoofdverblijf'),
+(13, 'Lim A Postraat',        '3',   'C',  2, 1, 1, 'hoofdverblijf'),
+(14, 'Blauwgrond',            '55',  NULL, 3, 1, 1, 'hoofdverblijf'),
+(15, 'Jagernath Lachmonstraat', '101', NULL, 4, 1, 1, 'hoofdverblijf'),
+(16, 'Welgedacht A',          '22',  NULL, 5, 1, 1, 'hoofdverblijf'),
+(17, 'Pontbuiten',            '8',   NULL, 1, 1, 1, 'hoofdverblijf');
 
-SELECT setval('adressen_id_seq', 1);
+SELECT setval('adressen_id_seq', 17);
 
 -- ============================================================
 -- TABLE: verblijven
@@ -205,6 +221,27 @@ CREATE TABLE verblijven (
     CONSTRAINT verblijven_ibfk_personen FOREIGN KEY (personen_id) REFERENCES personen (id),
     CONSTRAINT verblijven_ibfk_adressen  FOREIGN KEY (adressen_id) REFERENCES adressen  (id)
 );
+
+INSERT INTO verblijven (id, personen_id, adressen_id, inschrijvingsdatum, uitschrijvingsdatum, verblijf_type, is_actief) VALUES
+(1,  1,  1,  '2010-03-01', NULL, 'hoofdverblijf', TRUE),
+(2,  2,  2,  '2012-07-15', NULL, 'hoofdverblijf', TRUE),
+(3,  3,  3,  '2015-01-20', NULL, 'hoofdverblijf', TRUE),
+(4,  4,  4,  '2018-05-10', NULL, 'hoofdverblijf', TRUE),
+(5,  5,  5,  '2008-09-01', NULL, 'hoofdverblijf', TRUE),
+(6,  6,  6,  '2011-11-23', NULL, 'hoofdverblijf', TRUE),
+(7,  7,  7,  '2019-02-14', NULL, 'hoofdverblijf', TRUE),
+(8,  8,  8,  '2013-06-30', NULL, 'hoofdverblijf', TRUE),
+(9,  9,  9,  '2005-04-17', NULL, 'hoofdverblijf', TRUE),
+(10, 10, 10, '2021-08-05', NULL, 'hoofdverblijf', TRUE),
+(11, 11, 11, '2000-12-01', NULL, 'hoofdverblijf', TRUE),
+(12, 12, 12, '2016-03-22', NULL, 'hoofdverblijf', TRUE),
+(13, 13, 13, '2014-10-09', NULL, 'hoofdverblijf', TRUE),
+(14, 14, 14, '2017-07-18', NULL, 'hoofdverblijf', TRUE),
+(15, 15, 15, '2009-01-11', NULL, 'hoofdverblijf', TRUE),
+(16, 16, 16, '2022-04-03', NULL, 'hoofdverblijf', TRUE),
+(17, 17, 17, '2003-08-25', NULL, 'hoofdverblijf', TRUE);
+
+SELECT setval('verblijven_id_seq', 17);
 
 -- ============================================================
 -- TABLE: documenten
@@ -227,9 +264,25 @@ CREATE TABLE documenten (
 CREATE INDEX idx_documenten_persoon ON documenten (personen_id);
 
 INSERT INTO documenten (id, personen_id, document_type, document_nummer, uitgiftedatum, vervaldatum, uitgevende_instantie) VALUES
-(1, 1, 'identiteitskaart', 'SUR123456789', '2020-01-15', '2030-01-15', 'Ministerie van Binnenlandse Zaken');
+(1,  1,  'identiteitskaart', 'SUR-IC-001985', '2020-01-15', '2030-01-15', 'Ministerie van Binnenlandse Zaken'),
+(2,  2,  'identiteitskaart', 'SUR-IC-007890', '2019-06-01', '2029-06-01', 'Ministerie van Binnenlandse Zaken'),
+(3,  3,  'identiteitskaart', 'SUR-IC-007895', '2021-03-10', '2031-03-10', 'Ministerie van Binnenlandse Zaken'),
+(4,  4,  'identiteitskaart', 'SUR-IC-002310', '2022-05-20', '2032-05-20', 'Ministerie van Binnenlandse Zaken'),
+(5,  5,  'identiteitskaart', 'SUR-IC-003874', '2018-09-14', '2028-09-14', 'Ministerie van Binnenlandse Zaken'),
+(6,  6,  'identiteitskaart', 'SUR-IC-004561', '2020-11-30', '2030-11-30', 'Ministerie van Binnenlandse Zaken'),
+(7,  7,  'identiteitskaart', 'SUR-IC-005101', '2023-01-07', '2033-01-07', 'Ministerie van Binnenlandse Zaken'),
+(8,  8,  'identiteitskaart', 'SUR-IC-005202', '2019-08-22', '2029-08-22', 'Ministerie van Binnenlandse Zaken'),
+(9,  9,  'identiteitskaart', 'SUR-IC-005303', '2017-04-05', '2027-04-05', 'Ministerie van Binnenlandse Zaken'),
+(10, 10, 'identiteitskaart', 'SUR-IC-008123', '2021-12-18', '2031-12-18', 'Ministerie van Binnenlandse Zaken'),
+(11, 11, 'identiteitskaart', 'SUR-IC-009456', '2016-07-29', '2026-07-29', 'Ministerie van Binnenlandse Zaken'),
+(12, 12, 'identiteitskaart', 'SUR-IC-010001', '2022-02-14', '2032-02-14', 'Ministerie van Binnenlandse Zaken'),
+(13, 13, 'identiteitskaart', 'SUR-IC-010002', '2020-09-03', '2030-09-03', 'Ministerie van Binnenlandse Zaken'),
+(14, 14, 'identiteitskaart', 'SUR-IC-010003', '2023-06-11', '2033-06-11', 'Ministerie van Binnenlandse Zaken'),
+(15, 15, 'identiteitskaart', 'SUR-IC-010004', '2018-03-27', '2028-03-27', 'Ministerie van Binnenlandse Zaken'),
+(16, 16, 'identiteitskaart', 'SUR-IC-010005', '2024-01-09', '2034-01-09', 'Ministerie van Binnenlandse Zaken'),
+(17, 17, 'identiteitskaart', 'SUR-IC-010006', '2015-10-16', '2025-10-16', 'Ministerie van Binnenlandse Zaken');
 
-SELECT setval('documenten_id_seq', 1);
+SELECT setval('documenten_id_seq', 17);
 
 -- ============================================================
 -- TABLE: burgerlijke_staat_historie
@@ -246,6 +299,41 @@ CREATE TABLE burgerlijke_staat_historie (
     plaats_registratie VARCHAR(100) DEFAULT NULL,
     CONSTRAINT burgerlijke_staat_historie_ibfk_personen FOREIGN KEY (personen_id) REFERENCES personen (id) ON DELETE CASCADE
 );
+
+INSERT INTO burgerlijke_staat_historie (id, personen_id, burgerlijke_staat, wijzigingsdatum, akte_nummer, plaats_registratie) VALUES
+(1,  1,  'ongehuwd', '2005-01-01', NULL,          'Paramaribo'),
+(2,  1,  'gehuwd',   '2012-06-15', 'AK-2012-0615', 'Paramaribo'),
+(3,  2,  'ongehuwd', '2005-01-01', NULL,          'Nickerie'),
+(4,  2,  'gehuwd',   '2012-06-15', 'AK-2012-0616', 'Paramaribo'),
+(5,  3,  'ongehuwd', '2008-08-10', NULL,          'Paramaribo'),
+(6,  4,  'ongehuwd', '2010-03-14', NULL,          'Paramaribo'),
+(7,  5,  'ongehuwd', '1996-11-02', NULL,          'Wanica'),
+(8,  5,  'gehuwd',   '2005-04-20', 'AK-2005-0420', 'Paramaribo'),
+(9,  6,  'ongehuwd', '2001-06-25', NULL,          'Paramaribo'),
+(10, 6,  'gehuwd',   '2008-09-10', 'AK-2008-0910', 'Paramaribo'),
+(11, 6,  'gescheiden','2018-03-05', 'AK-2018-0305', 'Paramaribo'),
+(12, 7,  'ongehuwd', '2013-09-17', NULL,          'Nickerie'),
+(13, 8,  'ongehuwd', '2006-04-30', NULL,          'Paramaribo'),
+(14, 8,  'gehuwd',   '2014-11-22', 'AK-2014-1122', 'Paramaribo'),
+(15, 9,  'ongehuwd', '1993-12-08', NULL,          'Commewijne'),
+(16, 9,  'gehuwd',   '2001-07-14', 'AK-2001-0714', 'Paramaribo'),
+(17, 9,  'weduwe_weduwnaar', '2019-02-28', 'AK-2019-0228', 'Paramaribo'),
+(18, 10, 'ongehuwd', '2018-07-19', NULL,          'Paramaribo'),
+(19, 11, 'ongehuwd', '1987-02-11', NULL,          'Saramacca'),
+(20, 11, 'gehuwd',   '1995-08-03', 'AK-1995-0803', 'Paramaribo'),
+(21, 12, 'ongehuwd', '2009-08-03', NULL,          'Paramaribo'),
+(22, 12, 'geregistreerd_partnerschap', '2020-05-17', 'AK-2020-0517', 'Paramaribo'),
+(23, 13, 'ongehuwd', '2004-05-22', NULL,          'Wanica'),
+(24, 13, 'gehuwd',   '2013-09-08', 'AK-2013-0908', 'Paramaribo'),
+(25, 14, 'ongehuwd', '2011-10-15', NULL,          'Paramaribo'),
+(26, 15, 'ongehuwd', '1998-01-27', NULL,          'Nickerie'),
+(27, 15, 'gehuwd',   '2007-06-19', 'AK-2007-0619', 'Paramaribo'),
+(28, 15, 'gescheiden','2016-11-30', 'AK-2016-1130', 'Paramaribo'),
+(29, 16, 'ongehuwd', '2015-03-09', NULL,          'Paramaribo'),
+(30, 17, 'ongehuwd', '1990-11-30', NULL,          'Paramaribo'),
+(31, 17, 'gehuwd',   '1998-04-12', 'AK-1998-0412', 'Paramaribo');
+
+SELECT setval('burgerlijke_staat_historie_id_seq', 31);
 
 -- ============================================================
 -- TABLE: nationaliteit_historie
@@ -266,3 +354,24 @@ CREATE TABLE nationaliteit_historie (
 
 CREATE INDEX idx_nationaliteit_historie_persoon ON nationaliteit_historie (personen_id);
 CREATE INDEX idx_nationaliteit_historie_id      ON nationaliteit_historie (nationaliteiten_id);
+
+INSERT INTO nationaliteit_historie (id, personen_id, nationaliteiten_id, verkrijgingsdatum, verliesdatum, verkrijgingswijze) VALUES
+(1,  1,  1, '1985-01-23', NULL, 'geboorte'),
+(2,  2,  1, '1987-05-15', NULL, 'geboorte'),
+(3,  3,  1, '1990-08-10', NULL, 'geboorte'),
+(4,  4,  1, '1992-03-14', NULL, 'geboorte'),
+(5,  5,  1, '1978-11-02', NULL, 'geboorte'),
+(6,  6,  1, '1983-06-25', NULL, 'geboorte'),
+(7,  7,  1, '1995-09-17', NULL, 'geboorte'),
+(8,  8,  1, '1988-04-30', NULL, 'geboorte'),
+(9,  9,  1, '1975-12-08', NULL, 'geboorte'),
+(10, 10, 1, '2000-07-19', NULL, 'geboorte'),
+(11, 11, 1, '1969-02-11', NULL, 'geboorte'),
+(12, 12, 1, '1991-08-03', NULL, 'geboorte'),
+(13, 13, 1, '1986-05-22', NULL, 'geboorte'),
+(14, 14, 1, '1993-10-15', NULL, 'geboorte'),
+(15, 15, 1, '1980-01-27', NULL, 'geboorte'),
+(16, 16, 1, '1997-03-09', NULL, 'geboorte'),
+(17, 17, 1, '1972-11-30', NULL, 'geboorte');
+
+SELECT setval('nationaliteit_historie_id_seq', 17);
