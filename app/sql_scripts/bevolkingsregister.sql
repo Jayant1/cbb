@@ -140,11 +140,25 @@ CREATE INDEX idx_personen_achternaam    ON personen (achternaam);
 CREATE INDEX idx_personen_geboortedatum ON personen (geboortedatum);
 
 INSERT INTO personen (id, identificatienummer, voornamen, achternaam, geboortedatum, geboorteplaats, landen_id, geslacht, burgerlijke_staat, nationaliteiten_id, overlijdensdatum, overlijdensplaats, datum_aanmaak, datum_laatste_wijziging) VALUES
-(1, 'IC001985', 'Jan Willem',    'Aboikoni',                 '1985-01-23', 'Paramaribo', 1, 'M', 'gehuwd', 1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
-(2, 'IC007890', 'Maria Sophia',  'Aboikoni-Kasanpawiro',     '1987-05-15', 'Nickerie',   1, 'V', 'gehuwd', 1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
-(3, 'IC007895', 'Ravi Kumar',    'Ramkhelawan',              '1990-08-10', 'Paramaribo', 1, 'M', 'ongehuwd', 1, NULL, NULL, '2026-02-21 21:26:00', '2026-02-21 21:26:00');
+(1,  'IC001985', 'Jan Willem',      'Aboikoni',                 '1985-01-23', 'Paramaribo', 1, 'M', 'gehuwd',                    1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
+(2,  'IC007890', 'Maria Sophia',   'Aboikoni-Kasanpawiro',     '1987-05-15', 'Nickerie',   1, 'V', 'gehuwd',                    1, NULL, NULL, '2026-02-17 14:20:11', '2026-02-17 14:20:11'),
+(3,  'IC007895', 'Ravi Kumar',     'Ramkhelawan',              '1990-08-10', 'Paramaribo', 1, 'M', 'ongehuwd',                  1, NULL, NULL, '2026-02-21 21:26:00', '2026-02-21 21:26:00'),
+(4,  'IC002310', 'Priya Devi',     'Sital',                    '1992-03-14', 'Paramaribo', 1, 'V', 'ongehuwd',                  1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(5,  'IC003874', 'Winston',        'Boldewijn',                '1978-11-02', 'Wanica',     1, 'M', 'gehuwd',                    1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(6,  'IC004561', 'Anita',          'Doerga',                   '1983-06-25', 'Paramaribo', 1, 'V', 'gescheiden',                1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(7,  'IC005101', 'Carlos',         'Fernandes',                '1995-09-17', 'Nickerie',   1, 'M', 'ongehuwd',                  1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(8,  'IC005202', 'Sunita',         'Ramlakhan',                '1988-04-30', 'Paramaribo', 1, 'V', 'gehuwd',                    1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(9,  'IC005303', 'Jerome',         'Waterberg',                '1975-12-08', 'Commewijne', 1, 'M', 'weduwe_weduwnaar',          1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(10, 'IC008123', 'Fatima',         'Alibaks',                  '2000-07-19', 'Paramaribo', 1, 'V', 'ongehuwd',                  1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(11, 'IC009456', 'Daniël',         'Kromosoeto',               '1969-02-11', 'Saramacca',  1, 'M', 'gehuwd',                    1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(12, 'IC010001', 'Lisette',        'Pengel',                   '1991-08-03', 'Paramaribo', 1, 'V', 'geregistreerd_partnerschap', 1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(13, 'IC010002', 'Marcus',         'Telgt',                    '1986-05-22', 'Wanica',     1, 'M', 'gehuwd',                    1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(14, 'IC010003', 'Reshma',         'Jhinkoe',                  '1993-10-15', 'Paramaribo', 1, 'V', 'ongehuwd',                  1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(15, 'IC010004', 'Erwin',          'Naarendorp',               '1980-01-27', 'Nickerie',   1, 'M', 'gescheiden',                1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(16, 'IC010005', 'Chandra',        'Misier',                   '1997-03-09', 'Paramaribo', 1, 'V', 'ongehuwd',                  1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00'),
+(17, 'IC010006', 'Humphrey',       'Bouterse',                 '1972-11-30', 'Paramaribo', 1, 'M', 'gehuwd',                    1, NULL, NULL, '2026-02-22 10:00:00', '2026-02-22 10:00:00');
 
-SELECT setval('personen_id_seq', 3);
+SELECT setval('personen_id_seq', 17);
 
 -- ============================================================
 -- TABLE: adressen
