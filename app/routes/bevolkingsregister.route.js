@@ -124,7 +124,7 @@ module.exports = function(app) {
 
   /**
    * @swagger
-   * /:
+   * /opvragen_gegevens_uit_bevolkingsregister:
    *   get:
    *     summary: Ophalen van persoonsgegevens uit het bevolkingsregister
    *     description: Haalt alle gegevens op van een persoon op basis van identificatienummer, inclusief adres, documenten, nationaliteit historie en burgerlijke staat historie
@@ -156,7 +156,7 @@ module.exports = function(app) {
    *         description: Server fout
    */
   app.get(
-    "/",
-    controller.ophaalGegevensVanBevolkingsregister
+    "/opvragen_gegevens_uit_bevolkingsregister",
+    controller.opvragenGegevensUitBevolkingsregister
   );
 };

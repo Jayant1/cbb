@@ -11,7 +11,7 @@ const Document = db.documenten;
 const NationaliteitHistorie = db.nationaliteit_historie;
 const BurgerlijkeStaatHistorie = db.burgerlijke_staat_historie;
 
-exports.ophaalGegevensVanBevolkingsregister = async (req, res) => {
+exports.opvragenGegevensUitBevolkingsregister = async (req, res) => {
   try {
     const { identificatienummer } = req.query;
 
