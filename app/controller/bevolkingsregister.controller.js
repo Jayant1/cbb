@@ -24,65 +24,33 @@ exports.opvragenGegevensUitBevolkingsregister = async (req, res) => {
 
     const persoon = await Persoon.findOne({
       where: { identificatienummer },
+      attributes: ['identificatienummer', 'geslacht', 'achternaam', 'voornamen', 'geboortedatum', 'geboorteplaats', 'burgerlijke_staat'],
       include: [
-        {
-          model: Landen,
-          as: 'geboorteland',
-          attributes: ['id', 'land_code', 'landnaam']
-        },
-        {
-          model: Nationaliteiten,
-          as: 'nationaliteit',
-          attributes: ['id', 'nationaliteit_code', 'nationaliteit_naam']
-        },
         {
           model: Verblijf,
           as: 'verblijven',
           where: { is_actief: true },
           required: false,
+          attributes: ['inschrijvingsdatum'],
           include: [
             {
               model: Adres,
               as: 'adres',
+              attributes: ['straatnaam'],
               include: [
                 {
                   model: Wijken,
                   as: 'wijk',
-                  attributes: ['id', 'wijk_code', 'wijknaam']
+                  attributes: ['wijknaam']
                 },
                 {
                   model: Distrikten,
                   as: 'distrikt',
-                  attributes: ['id', 'distrikt_code', 'distriktnaam']
-                },
-                {
-                  model: Landen,
-                  as: 'land',
-                  attributes: ['id', 'land_code', 'landnaam']
+                  attributes: ['distriktnaam']
                 }
               ]
             }
           ]
-        },
-        {
-          model: Document,
-          as: 'documenten',
-          attributes: ['id', 'document_type', 'document_nummer', 'uitgiftedatum', 'vervaldatum', 'uitgevende_instantie']
-        },
-        {
-          model: NationaliteitHistorie,
-          as: 'nationaliteit_historie',
-          include: [
-            {
-              model: Nationaliteiten,
-              as: 'nationaliteit',
-              attributes: ['id', 'nationaliteit_code', 'nationaliteit_naam']
-            }
-          ]
-        },
-        {
-          model: BurgerlijkeStaatHistorie,
-          as: 'burgerlijke_staat_historie'
         }
       ]
     });
@@ -94,9 +62,23 @@ exports.opvragenGegevensUitBevolkingsregister = async (req, res) => {
       });
     }
 
+    const verblijf = persoon.verblijven && persoon.verblijven[0];
+
     return res.status(200).json({
       success: true,
-      data: persoon
+      data: {
+        identiteitsnummer:   persoon.identificatienummer,
+        geslacht:            persoon.geslacht,
+        geslachtsnaam:       persoon.achternaam,
+        voornamen:           persoon.voornamen,
+        geboortedatum:       persoon.geboortedatum,
+        geboorteplaats:      persoon.geboorteplaats,
+        burgerlijke_staat:   persoon.burgerlijke_staat,
+        adres:               verblijf ? verblijf.adres.straatnaam : null,
+        ressort:             verblijf ? verblijf.adres.wijk.wijknaam : null,
+        distrikt:            verblijf ? verblijf.adres.distrikt.distriktnaam : null,
+        registratiedatum:    verblijf ? verblijf.inschrijvingsdatum : null
+      }
     });
 
   } catch (error) {
